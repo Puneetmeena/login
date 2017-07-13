@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>signup</title>
+	<link rel="stylesheet" type="text/css" href="stylecss.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<script type="text/javascript" src="bootstrap.min.js"></script>
+</head>
+<body>
+       <div class="container" style="margin-left: 0px; margin-right: 0px; width: 1365px;">
+       	  <form id="form_id" method="post" name="myform" action="register" onsubmit="return checkform(this);"> 
+       	  <div class="field">
+       	  <label style="font-size: 20px; margin-bottom: 0px;"> Name :</label><br>
+       	  <input type="text" name="firstname" class="inputbox" id="firstname" placeholder="FIRSTNAME" onblur="firstnamecheck();"/>
+          <input type="text" name="middlename" class="inputbox" id="middlename" placeholder="MIDDLENAME(opitonal)" />
+          <input type="text" name="lastname" class="inputbox" id="lastname" placeholder="LASTNAME" onblur="lastnamecheck();"/><br>
+          <table>
+          <tr>
+          <td>
+          </div>
+         <label style="font-size: 20px;">Date of Birth: </label>
+      <div class="form-group">
+        <input type="date" name="dob" id="dob" class="form-control" placeholder="Date of Birth" onblur="agecheck();" />
+      </div>
+         </td>
+         </tr>
+         </table>
+         <div class="filled">
+         <label style="font-size: 20px; margin-bottom: 0px;"> Contact : </label><br>
+         <input type="number" name="mobile" class="inputbox" id="mobile" placeholder="MOBILE NO."  onblur="mobilecheck();"/>
+         <input type="text" name="email" class="inputbox" id="email" placeholder="EMAIL"/><br>
+         <label style="font-size: 20px; margin-bottom: 0px;">Qualification Details :</label><br>
+         <input type="text" name="graduation" class="inputbox" id="Qualification" placeholder="GRADUATION COURSE" />
+         <input type="number" name="graduation" class="inputbox" id="grayr" placeholder="GRADUATION YEAR" onblur="grayrcheck();"/>
+         <input type="text" name="graduation" class="inputbox" id="Qualification1" placeholder="POST-GRADUATION COURSE"/>
+         <input type="number" name="graduation" class="inputbox" id="postyr" placeholder="POST-GRADUATION YEAR" onblur="postyrcheck();"/><br>
+         <label style="font-size: 20px; margin-bottom: 0px;">Address : </label><br>
+         <textarea id="address" cols="50" rows="4" class="input" id="address" placeholder="ADDRESS" onblur="addcheck();"/></textarea><br>
+         <label style="font-size: 20px; margin-bottom: 0px;">Login Details:</label></br>
+         <input type="text" name="username" class="inputbox" id="username" placeholder="USERNAME" onblur="usernamecheck();"/>
+         <input type="text" name="password" class="inputbox" id="password" placeholder="PASSWORD" onblur="passwordcheck();"/><br>
+         
+         <button type="submit" value="submit" id="submit" class="button">Submit</button>
+       </div>
+       </form>
+       </div>
+      
+
+       <script type="text/javascript">
+             
+              function firstnamecheck()
+              {
+              	var firstname=document.getElementById("firstname").value
+              	if (firstname!=/^[a-zA-Z]/ && firstname!="") 
+              	{
+              		alert("invalid chracters");
+              	}
+              	return false;
+              } 
+              function lastnamecheck()
+              {
+              	var lastname=document.getElementById("lastname").value
+              	if (lastname!=/^[a-zA-Z]/ && lastname!="") 
+              	{
+              		alert("invalid characters");
+              	}
+              	return false;
+              }    
+
+             function mobilecheck()
+             {
+             	var mobile=document.getElementById("mobile").value
+             	if (mobile.length > 10 || mobile.length<10 && mobile!="") {
+             		alert("enter valid mobile number");
+             	}
+
+             	return false;
+             }
+             
+             function grayrcheck()
+             {  
+             	var grayr=document.getElementById("grayr").value
+             	if (grayr.length > 4||grayr.length < 4&&grayr!="") {
+             		alert("enter valid graduation year");
+             	}
+             	return false;
+             }
+
+             function postyrcheck()
+             {
+             	var postyr=document.getElementById("postyr").value
+             	var grayr=document.getElementById("grayr").value
+             	if (postyr.length > 4||postyr.length<4 &&postyr!="") {
+             		alert("enter valid post-graduation year");
+             	}
+             	else if (postyr<grayr) {
+             		alert("post-graduation year should be greater than graduation year");
+             	}
+             	return false;
+             }  
+             function addcheck()
+             {  var special="!+-=-_?/*|\":<>[]{}`\';()@&$#%";
+             	var address=document.getElementById("address").value
+             	for (var i = 0; i < address.length; i++) 
+             	{
+	              if (special.indexOf(address.charAt(i)) != -1&&address!="")
+	              {
+		            alert("special characters not allowed in address");
+		          }
+		        }  
+              return false;
+             } 
+             function agecheck()
+             {
+             	var currentdate = new Date();
+	            var currentyear = currentdate.getFullYear();
+                var year=document.getElementById("year").value
+                if ((currentyear - year) < 21 && year!="")
+                {
+                	alert("age should be greater than 21");
+                }
+                if (year.length < 4||year.length > 4 && year!="") 
+                {
+                	alert("enter valid year");
+                }
+             return false;
+             }          
+              function usernamecheck()
+              { var special="!+-=-_?/*|\":<>[]{}`\';()@&$#%";
+              	var username=document.getElementById("username").value
+              	for (var i = 0; i < username.length; i++) 
+             	{
+	              if (special.indexOf(username.charAt(i)) != -1&&username!="")
+	              {
+		            alert("special characters not allowed in address");
+		          }
+		        }  
+               if (username.length<5&&username!="") 
+               {
+               	alert("username should be greater than 5 characters");
+               }          
+               return false;
+
+              }
+             function passwordcheck()
+             {
+             	var special="!+-=-_?/*|\":<>[]{}`\';()@&$#%";
+             	var password=document.getElementById("password").value
+                for (var i = 0; i < password.length; i++) 
+             	{
+	              if (password!=""&& password.length < 8 )
+	              {
+		            alert("password should be greater than 8 characters");
+		          }
+		        } return false; 
+             }
+              function checkform()
+              {
+              	var firstname = document.getElementById("firstname").value
+              	var lastname = document.getElementById("lastname").value
+                
+                var contact=document.getElementById("mobile").value 
+                var contacts=document.getElementById("email").value
+                var Qualification=document.getElementById("Qualification").value
+                var Qualification1=document.getElementById("Qualification1").value
+                var Qualification2=document.getElementById("grayr").value
+                var Qualification3=document.getElementById("postyr").value
+                var address=document.getElementById("address").value
+                var username=document.getElementById("username").value
+                var password=document.getElementById("password").value
+              	if (firstname==""|| lastname=="" || mobile==""||email==""||Qualification==""||Qualification1==""||grayr==""||postyr=="" ||address=="" ||username==""||password=="") {
+              		alert("all fields required");
+                  return false;
+              	}
+               else
+               {
+               	 return true;
+               }
+              	
+              }    
+
+       </script>
+</body>
+</html>

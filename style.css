@@ -1,0 +1,57 @@
+html, body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+.container
+{ height: 100%;
+  width: 100%;
+  position: relative;
+  background:url('https://www.city-journal.org/sites/cj/files/New-York.jpg');	
+  background-size: cover;
+  background-position: center;
+  visibility: visible;
+}
+.login
+{  padding-top: 15%;
+   padding-left: 40%; 
+   font-weight: bold;
+   font-size: 20px;
+   color: black;
+   font-family: garamond;
+
+
+
+}
+.inputbox
+{
+	width: 30%;
+    padding:10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.button
+{   width: 10%;
+	height: 30px;
+	
+    font-weight: bold;
+    font-family: cursive;
+    background-color: transparent;
+    opacity: 5%;
+    font-size: 16px;
+
+}
+
+.click
+{
+	 width: 10%;
+	height: 30px;
+	
+    font-weight: bold;
+    font-family: cursive;
+    background-color: transparent;
+    opacity: 5%;
+    font-size: 16px;
+}
